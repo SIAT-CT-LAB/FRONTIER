@@ -1,0 +1,38 @@
+# Logger options
+log_iter: 50                 # How often to log the training loss
+val_iter: 50                # How often to validate testing and save output images during training
+
+# Optimization options
+max_iter: 2500                # Maximum number of training iterations
+batch_size: 1                 # Batch size
+loss: L2
+optimizer: Adam               # Optimizer for trainings
+weight_decay: 0.0             # Weight decay
+beta1: 0.9                    # Adam parameter
+beta2: 0.999                  # Adam parameter
+lr: 0.00001                 # Initial learning rate [RFF: 10-3, Neural Recon: 10-4, Prior-based Neural Recon: 10-5]
+lr_max: 0.00000001
+
+# Model options
+model: SIREN                  # Options for MLP models
+net:
+  network_input_size: 1024     # Input size for network
+  network_output_size: 1
+  network_depth: 8            # Depth of MLP layers
+  network_width: 256          # Width of MLP layers
+
+encoder:
+  embedding: gauss            # Input embedding method
+  scale: 4
+  embedding_size: 512         # Embedding size for input Fourier feature encoding
+  coordinates_size: 2
+
+num_proj: 1000                  # Number of projections for CT recon
+
+# Data
+data: spec35
+energy: '1'
+img_size: 256     # (92, 256, 256)
+time_num: 5    #  temporal resolution factor
+#pretrain_model_path: outputs/train_fullSino/DECT6082keV/slice256_img256_proj1000_SIREN_512_256_8_L2_lr1e-06_encoder_gauss_scale4_size256/checkpoints/model_final.pt
+pretrain_model_path: outputs/pre_train_spec/spec35E1/img256_SIREN_1024_256_8_L2_lr0.0001_encoder_gauss_scale4_size512/checkpoints/model_001200.pt
